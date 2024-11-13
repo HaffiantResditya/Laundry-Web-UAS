@@ -90,7 +90,7 @@ export default function DataTransaksi() {
     <DashboarLayout menu={5} title={"Transaksi Laundry"}>
       <BoxContent className="p-5 border-[#d4bdd2a1]">
         <div className="flex justify-between mb-5">
-          <Button className="w-[150px] px-2" label="Tambah Laundry" />
+          <Button className="w-[150px] px-1" label="Tambah Transaksi Laundry" />
           <div className="relative w-[300px]">
             <input
               type="text"
@@ -99,7 +99,7 @@ export default function DataTransaksi() {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full p-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:border-[#541E50] shadow-sm text-gray-700"
             />
-            <BiSearch className="absolute left-3 top-1/2 transform -translate-y-5 text-gray-400" size={20} />
+            <BiSearch className="absolute left-3 top-1/3 transform -translate-y-5 text-gray-400" size={20} />
           </div>
         </div>
         <TableComponent data={filteredData} columns={columns} />

@@ -90,7 +90,7 @@ export default function DataTransaksi() {
     <DashboarLayoutKasir menu={5} title={"Transaksi Laundry"}>
       <BoxContent className="p-5 border-[#d4bdd2a1]">
         <div className="flex justify-between mb-5">
-          <Button className="w-[150px] px-2" label="Tambah Laundry" />
+          <Button className="w-[150px] px-2" label="Tambah Transaksi Laundry" />
           <div className="relative w-[300px]">
             <input
               type="text"

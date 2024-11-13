@@ -10,7 +10,7 @@ export default function DataUser() {
   // Data dummy
   const initialData = [
     { username: "admin", password: "123", role: "admin" },
-    { username: "user", password: "123", role: "user" },
+    { username: "user", password: "123", role: "kasir" },
   ];
   
   const [data, setData] = useState(initialData);
