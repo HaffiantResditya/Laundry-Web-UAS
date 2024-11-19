@@ -4,13 +4,14 @@ import { TiThMenu } from "react-icons/ti";
 import { FaClipboardUser } from "react-icons/fa6";
 import { IoLogOut } from "react-icons/io5";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import TitleContent from "../common/TitleContent";
 import SideMenuMobile from "./SideMenuMobile";
 import Swal from "sweetalert2";
 
 const HeadBar = ({ setShow }) => {
   const [logoutBox, setLogoutBox] = useState(false);
+  const navigate = useNavigate(); // Inisialisasi navigate
 
   return (
     <div className="border h-[80px] bg-white flex items-center justify-between lg:justify-end px-5">
@@ -42,6 +43,7 @@ const HeadBar = ({ setShow }) => {
                 Swal.fire("Anda Berhasil Logout!", "", "success");
                 setLogoutBox(false);
                 // Logika untuk logout, seperti navigasi ulang ke halaman login
+                navigate("/"); // Redirect ke halaman login setelah logout
               }
             });
           }}
@@ -71,7 +73,12 @@ function DashboarLayout({ children, menu = 1, title }) {
   return (
     <div className="bg-white h-[100vh] w-[100vw] flex flex-row">
       <SideMenu menu={menu} role={role} />
-      <SideMenuMobile show={mobileMenu} setShow={setMobileMenu} menu={menu} role={role} />
+      <SideMenuMobile
+        show={mobileMenu}
+        setShow={setMobileMenu}
+        menu={menu}
+        role={role}
+      />
       <div className="border flex flex-col flex-1 bg-gray-50">
         <HeadBar setShow={() => setMobileMenu(true)} />
         <section className="flex-1 p-5">

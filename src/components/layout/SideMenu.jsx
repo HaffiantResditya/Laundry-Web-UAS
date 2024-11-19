@@ -7,6 +7,7 @@ import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { IoLogOut } from "react-icons/io5";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { BiSolidReport } from "react-icons/bi";
 
 const ListMenu = ({ label, href, icon, active = false, onClick = false }) => {
   return (
@@ -68,6 +69,12 @@ export default function SideMenu({ menu = 1 }) {
           active={menu === 6}
         />
         <ListMenu
+          icon={<BiSolidReport />}
+          label={"Data Laporan"}
+          href={"/data-laporan"}
+          active={menu === 7}
+        />
+        <ListMenu
           icon={<IoLogOut />}
           label={"Logout"}
           href={"#"}
@@ -86,7 +93,7 @@ export default function SideMenu({ menu = 1 }) {
               }
             })
           }
-          active={menu === 7}
+          active={menu === 8}
         />
       </section>
     </div>

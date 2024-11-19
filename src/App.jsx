@@ -11,6 +11,7 @@ import HomeKasir from "./pages/HomeKasir";
 import DataPelangganKasir from "./pages/DataPelangganKasir";
 import DataTransaksiKasir from "./pages/DataTransaksiKasir";
 import DataPengeluaranKasir from "./pages/DataPengeluaranKasir";
+import DataLaporan from "./pages/DataLaporan";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,9 @@ const router = createBrowserRouter([
     path: "/user",
     element: <DataUser />,
   },
+  {
+    path: "/data-laporan",
+    element: <DataLaporan />,}
 ]);
 
 function App() {
