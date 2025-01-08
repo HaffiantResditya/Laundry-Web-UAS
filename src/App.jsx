@@ -60,7 +60,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/data-laporan",
-    element: <DataLaporan />,}
+    element: <DataLaporan />,
+  },
 ]);
 
 function App() {

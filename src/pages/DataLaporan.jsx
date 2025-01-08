@@ -6,7 +6,8 @@ import DashboarLayout from "../components/layout/DashboarLayout";
 import { RiArrowUpDownFill } from "react-icons/ri";
 import { GrMoney } from "react-icons/gr";
 import { IoSearch } from "react-icons/io5";
-import { AiOutlinePrinter } from "react-icons/ai";
+import { AiOutlinePrinter} from "react-icons/ai";
+import { AiOutlineFile } from "react-icons/ai";
 
 export default function DataLaporan() {
   const initialData = [
@@ -21,7 +22,6 @@ export default function DataLaporan() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  // Filter data berdasarkan rentang tanggal
   const filteredData = data.filter((item) => {
     const itemDate = new Date(item.tanggal);
     const start = startDate ? new Date(startDate) : null;
@@ -41,7 +41,6 @@ export default function DataLaporan() {
   const totalPemasukan = filteredData.reduce((total, item) => total + item.pemasukan, 0);
   const totalPengeluaran = filteredData.reduce((total, item) => total + item.pengeluaran, 0);
 
-  // Fungsi untuk mencetak data
   const handlePrint = () => {
     const printWindow = window.open("", "_blank");
     const htmlContent = `
@@ -53,18 +52,10 @@ export default function DataLaporan() {
             table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
             th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
             th { background-color: #f4f4f4; }
-            .summary { margin-bottom: 20px; }
-            .summary div { margin-bottom: 10px; }
           </style>
         </head>
         <body>
           <h2>Data Laporan</h2>
-          <div class="summary">
-          <div><strong><h3>8Laundry</h3></strong</div>
-            <div><strong>Total Pemasukan:</strong> Rp. ${totalPemasukan.toLocaleString()}</div>
-            <div><strong>Total Pengeluaran:</strong> Rp. ${totalPengeluaran.toLocaleString()}</div>
-            <div><strong>Saldo Akhir:</strong> Rp. ${(totalPemasukan - totalPengeluaran).toLocaleString()}</div>
-          </div>
           <table>
             <thead>
               <tr>
@@ -101,10 +92,64 @@ export default function DataLaporan() {
     printWindow.print();
   };
 
+  const handleDailyReport = () => {
+    const today = new Date().toISOString().split("T")[0];
+    const dailyData = data.filter((item) => item.tanggal === today);
+
+    const printWindow = window.open("", "_blank");
+    const htmlContent = `
+      <html>
+        <head>
+          <title>Laporan Harian</title>
+          <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+            th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+            th { background-color: #f4f4f4; }
+          </style>
+        </head>
+        <body>
+          <h2>Laporan Harian - ${today}</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>Keterangan</th>
+                <th>Catatan</th>
+                <th>Pemasukan</th>
+                <th>Pengeluaran</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${dailyData
+                .map(
+                  (item) => `
+                  <tr>
+                    <td>${item.no}</td>
+                    <td>${item.tanggal}</td>
+                    <td>${item.keterangan}</td>
+                    <td>${item.catatan}</td>
+                    <td>Rp. ${item.pemasukan.toLocaleString()}</td>
+                    <td>Rp. ${item.pengeluaran.toLocaleString()}</td>
+                  </tr>
+                `
+                )
+                .join("")}
+            </tbody>
+          </table>
+        </body>
+      </html>
+    `;
+    printWindow.document.write(htmlContent);
+    printWindow.document.close();
+    printWindow.print();
+  };
+
   return (
     <DashboarLayout menu={7} title={"Data Laporan"}>
       <BoxContent className="p-5 border-[#d4bdd2a1]">
-        <div className="flex justify-between mb-5 flex-col md:flex-row items-start lg:items-center">
+        <div className="flex flex-col md:flex-row justify-between mb-5 items-start lg:items-center">
           <div className="relative w-full flex gap-5">
             <section className="flex items-center bg-gray-100 px-2 rounded-lg">
               <p className="text-gray-500 font-bold mr-2">Tgl Awal</p>
@@ -130,12 +175,22 @@ export default function DataLaporan() {
               label="Cari"
             />
           </div>
-          <Button
-            icon={<AiOutlinePrinter />}
-            className="bg-blue-500 text-white px-5 py-2"
-            label="Cetak"
-            onClick={handlePrint}
-          />
+          <div className="flex gap-3 mt-5 md:mt-0">
+            <Button
+              icon={<AiOutlinePrinter />}
+              className="bg-blue-500 text-white px-5 py-2"
+              label="Cetak"
+              onClick={handlePrint}
+            />
+            <Button
+              icon={<AiOutlineFile />}
+              className="bg-green-500 text-white px-5 py-2"
+              label="Laporan Harian"
+              onClick={handleDailyReport}
+            />
+          </div>
+
+          
         </div>
         <section className="flex flex-col md:flex-row justify-between gap-10 my-10">
           <BoxValue value={totalPemasukan} label="Total Pemasukan" icon={<RiArrowUpDownFill className="text-green-500" />} />
