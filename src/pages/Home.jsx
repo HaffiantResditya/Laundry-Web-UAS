@@ -22,16 +22,22 @@ export default function Home() {
   return (
     <DashboarLayout menu={1} title={"Dashboard"}>
       <section className="flex justify-between mt-5 flex-wrap flex-row">
-        <BoxItem icon={<FaUsers />} val={100} label={"Data Pelanggan"} />
-        <BoxItem icon={<FaUser />} val={1} label={"Data User"} />
+        <BoxItem
+          icon={<FaUsers />}
+          val={5}
+          label={"Data Pelanggan"} />
+        <BoxItem
+          icon={<FaUser />}
+          val={2}
+          label={"Data User"} />
         <BoxItem
           icon={<MdShoppingCart />}
-          val={50}
+          val={1}
           label={"Transaksi Laundry"}
         />
         <BoxItem
           icon={<FaMoneyBillTransfer />}
-          val={100}
+          val={3}
           label={"Data Pengeluaran"}
         />
       </section>

@@ -23,7 +23,7 @@ function TambahTransaksi({ onKembali, onTambahData }) {
     { jenis: "Setrika Saja", tarif: 3000, tglSelesai: "2024-11-19" },
   ];
 
-  const pelanggan = ["Mang Mamang", "John Doe", "Jane Smith"];
+  const pelanggan = ["Ichigo", "Zaraki", "Toshiro", "Orihime", "Ishida"];
 
   const handleChange = (e) => {
     const { name, value } = e.target;

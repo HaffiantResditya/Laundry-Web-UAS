@@ -10,7 +10,7 @@ export default function DataTransaksi() {
   const data = [
     {
       id: 1,
-      pelanggan: "John Doe",
+      pelanggan: "Ishida",
       jenis_layanan: "Cuci Kering",
       tgl_terima: "2024-10-01",
       tgl_selesai: "2024-10-03",
@@ -20,7 +20,7 @@ export default function DataTransaksi() {
     },
     {
       id: 2,
-      pelanggan: "Jane Smith",
+      pelanggan: "Ichigo",
       jenis_layanan: "Cuci Setrika",
       tgl_terima: "2024-10-02",
       tgl_selesai: "2024-10-05",
@@ -30,7 +30,7 @@ export default function DataTransaksi() {
     },
     {
       id: 3,
-      pelanggan: "Michael Johnson",
+      pelanggan: "Zaraki",
       jenis_layanan: "Setrika Saja",
       tgl_terima: "2024-10-03",
       tgl_selesai: "2024-10-04",

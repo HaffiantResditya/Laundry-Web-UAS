@@ -12,6 +12,7 @@ import DataPelangganKasir from "./pages/DataPelangganKasir";
 import DataTransaksiKasir from "./pages/DataTransaksiKasir";
 import DataPengeluaranKasir from "./pages/DataPengeluaranKasir";
 import DataLaporan from "./pages/DataLaporan";
+import DataLaporanKasir from "./pages/DataLaporanKasir";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
     path: "/data-laporan",
     element: <DataLaporan />,
   },
+  {
+    path: "/data-laporan/kasir",
+    element: <DataLaporanKasir />,
+  }
 ]);
 
 function App() {

@@ -2,6 +2,8 @@ import { FaUsers } from "react-icons/fa";
 import DashboarLayoutKasir from "../components/layout/DashboarLayoutKasir";
 import { MdShoppingCart } from "react-icons/md";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
+import { BiSolidReport } from "react-icons/bi";
+
 
 const BoxItem = ({ icon, val, label }) => {
   return (
@@ -21,16 +23,24 @@ export default function HomeKasir() {
   return (
     <DashboarLayoutKasir menu={1} title={"Dashboard"}>
       <section className="flex justify-between mt-5 flex-wrap flex-row">
-        <BoxItem icon={<FaUsers />} val={100} label={"Data Pelanggan"} />
+        <BoxItem
+          icon={<FaUsers />}
+          val={5}
+          label={"Data Pelanggan"} />
         <BoxItem
           icon={<MdShoppingCart />}
-          val={50}
+          val={1}
           label={"Transaksi Laundry"}
         />
         <BoxItem
           icon={<FaMoneyBillTransfer />}
-          val={100}
+          val={3}
           label={"Data Pengeluaran"}
+        />
+        <BoxItem
+          icon={<BiSolidReport />}
+          val={5}
+          label={"Data Laporan"}
         />
       </section>
     </DashboarLayoutKasir>
