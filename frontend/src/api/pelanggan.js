@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:2025";
+const baseUrl = "http://localhost:5000";
 export const getPelanggan = async () => {
   const url = baseUrl + "/api/pelanggan";
   const res = await axios.get(url, {
