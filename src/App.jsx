@@ -13,6 +13,7 @@ import DataTransaksiKasir from "./pages/DataTransaksiKasir";
 import DataPengeluaranKasir from "./pages/DataPengeluaranKasir";
 import DataLaporan from "./pages/DataLaporan";
 import DataLaporanKasir from "./pages/DataLaporanKasir";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/transaksi/kasir",
-    element: <DataTransaksiKasir />
+    element: <DataTransaksiKasir />,
   },
   {
     path: "/pengeluaran",
@@ -66,11 +67,17 @@ const router = createBrowserRouter([
   {
     path: "/data-laporan/kasir",
     element: <DataLaporanKasir />,
-  }
+  },
 ]);
 
+// Create a client
+const queryClient = new QueryClient();
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />;
+    </QueryClientProvider>
+  );
 }
 
 export default App;

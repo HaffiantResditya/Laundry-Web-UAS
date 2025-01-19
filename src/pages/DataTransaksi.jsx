@@ -168,7 +168,7 @@ export default function DataTransaksi() {
   const [data, setData] = useState([
     {
       id: 1,
-      pelanggan: "John Doe",
+      pelanggan: "John ",
       jenis_layanan: "Cuci Kering",
       tgl_terima: "2024-10-01",
       tgl_selesai: "2024-10-03",
